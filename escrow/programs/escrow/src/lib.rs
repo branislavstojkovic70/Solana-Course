@@ -9,13 +9,13 @@ pub use constants::*;
 pub use instructions::*;
 pub use state::*;
 
-declare_id!("DK5LBFx6qpgNJYbASRBDxqiT7NXAvbExucB66PATNNbE");
+declare_id!("FSv4vtHZbyh8dkVXutBtLu4NSCajNFCYfpTh3dg9mh3G");
 
 #[program]
 pub mod escrow {
     use super::*;
 
-    pub fn make_offer(ctx: Context<MakeOffer>, id: u64, token_a_offered_amount: u64, token_b_wanted_amount: u64) -> Result<()> {
+    pub fn make_offer(ctx: Context<MakeOffer>, id: u64, token_a_offered_amount:u64 , token_b_wanted_amount:u64) -> Result<()> {
         instructions::make_offer::send_offered_tokens_to_vault(&ctx, token_a_offered_amount)?;
         instructions::make_offer::save_offer(ctx, id, token_b_wanted_amount)
     }
@@ -24,4 +24,5 @@ pub mod escrow {
         instructions::take_offer::sent_wanted_tokens_to_maker(&ctx)?;
         instructions::take_offer::withdraw_and_close_vault(ctx)
     }
+
 }

@@ -14,7 +14,7 @@ const getRandomBigNumber = (size = 8) => {
   return new anchor.BN(randomBytes(size));
 }
 
-describe("escrow", () => {
+describe("escrow", () => { 
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
 
